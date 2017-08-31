@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+  .row
+    .col-xs-12
+      h1.text-center Free Coins!
+      form(autocomplete="on" method="post" action="/faucet")
+        .form-group
+          label(for="address") Your address
+          input.form-control(name="address" type="text" id="address" placeholder="ex. 1HAh4vveCTwQZZSCv7UaxE52dhY2jyYwME")
+          p.help-block Enter your address to get started.
+        button.btn.btn-default(type="submit") Submit

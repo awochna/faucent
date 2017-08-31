@@ -1,0 +1,38 @@
+extends layout.pug
+
+block content
+  .row
+    col-xs-12
+      p
+        strong Your Address:
+        |
+        |
+        span= account.address
+      .well
+        .row
+          .col-sm-4
+            p
+              strong Current Balance:
+              |
+              |
+              span= account.getBalance()
+          .col-sm-4
+            p
+              strong Total Paid:
+              |
+              |
+              span= account.getTotalWithdrawals()
+          .col-sm-4
+            p
+              strong Total Acquired:
+              |
+              |
+              span= account.getTotalDeposits()
+        .text-center
+          p A balance of 5000 is required to withdraw.
+          form(method="post" action="/withdraw")
+            input(name="address" type="hidden" value=account.address)
+            button.btn.btn-default(type="submit") Withdraw
+      form.text-center(method="post" action="/claim")
+        input(name="address" type="hidden" value=account.address)
+        button.btn.btn-primary(type="submit") Claim 100 more
